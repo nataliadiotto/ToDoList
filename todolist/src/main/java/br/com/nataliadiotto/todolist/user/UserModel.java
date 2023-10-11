@@ -1,5 +1,6 @@
 package br.com.nataliadiotto.todolist.user;
 
+import jakarta.persistence.Entity;
 import lombok.Data;
 
 @Data
