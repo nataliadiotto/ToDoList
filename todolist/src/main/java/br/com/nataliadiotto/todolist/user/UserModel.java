@@ -1,5 +1,6 @@
 package br.com.nataliadiotto.todolist.user;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -17,6 +18,7 @@ public class UserModel {
     @GeneratedValue(generator = "UUID") //automatically generate Id
     private UUID id;
 
+    @Column(unique = true) //constraint for granting unique users
     private String username;
     private String name;
     private String password;
