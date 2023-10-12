@@ -51,6 +51,7 @@ public class FilterTaskAuth extends OncePerRequestFilter {
                     //convert to charArray and compare the password stored in the DB to the one received by user
                     var verifyPassword = BCrypt.verifyer().verify(password.toCharArray(), user.getPassword());
                     if (verifyPassword.verified) {
+                        request.setAttribute("userId", user.getId());
                         filterChain.doFilter(request, response);
                     } else {
                         response.sendError(401);
