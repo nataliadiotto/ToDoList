@@ -48,4 +48,14 @@ public class TaskController {
         return tasks;
     }
 
+    //http://localhost:8080/tasks/806464046-gdfgfdg-54513143
+    //springboot will replace {taskId} for the pathvariable uuid
+    @PutMapping("/{taskId}")
+    public TaskModel update(@RequestBody TaskModel taskModel, HttpServletRequest request, @PathVariable UUID taskId) {
+        var userId = request.getAttribute("userId");
+        taskModel.setUserId((UUID) userId);
+        taskModel.setId(taskId);
+        return this.taskRepository.save(taskModel);
+    }
+
 }
