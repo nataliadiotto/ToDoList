@@ -25,10 +25,10 @@ public class UserController {
         }
 
         //encrypt password
-        var passowrdHashred = BCrypt.withDefaults()
+        var hashedPassword = BCrypt.withDefaults()
                 .hashToString(12, userModel.getPassword().toCharArray());
 
-        userModel.setPassword(passowrdHashred);
+        userModel.setPassword(hashedPassword);
 
         var userCreated = this.userRepository.save(userModel);
         return ResponseEntity.status(HttpStatus.CREATED).body(userCreated);
