@@ -12,3 +12,5 @@ Estamos apenas começando! Nessa aula você vai aprender mais sobre desenvolvime
 
 Aula 03 - Implementando segurança nos dados do usuário
 Chegamos na metade do curso! Nessa aula você vai aprender aspectos cruciais de segurança e estruturação para garantir um acesso seguro a sua aplicação.
+
+Aula 04 -
