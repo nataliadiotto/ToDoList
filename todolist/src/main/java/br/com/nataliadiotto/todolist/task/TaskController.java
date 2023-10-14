@@ -1,8 +1,7 @@
 package br.com.nataliadiotto.todolist.task;
 
 
-import br.com.nataliadiotto.todolist.task.TaskRepository;
-import jakarta.servlet.http.HttpServlet;
+import br.com.nataliadiotto.todolist.utils.Utils;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/tasks")
@@ -49,13 +49,15 @@ public class TaskController {
     }
 
     //http://localhost:8080/tasks/806464046-gdfgfdg-54513143
-    //springboot will replace {taskId} for the pathvariable uuid
+    //springboot will replace {taskId} for the pathvariable UUID
     @PutMapping("/{taskId}")
-    public TaskModel update(@RequestBody TaskModel taskModel, HttpServletRequest request, @PathVariable UUID taskId) {
-        var userId = request.getAttribute("userId");
-        taskModel.setUserId((UUID) userId);
-        taskModel.setId(taskId);
-        return this.taskRepository.save(taskModel);
-    }
+    public TaskModel update(@RequestBody TaskModel taskModel, @PathVariable UUID taskId, HttpServletRequest request) {
+
+        var task = this.taskRepository.findById(taskId).orElse(null);
+
+        Utils.copyNonNullProperties(taskModel, task); //
+
+        return this.taskRepository.save(task);
+           }
 
 }
