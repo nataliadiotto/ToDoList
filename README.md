@@ -13,4 +13,5 @@ Estamos apenas começando! Nessa aula você vai aprender mais sobre desenvolvime
 Aula 03 - Implementando segurança nos dados do usuário
 Chegamos na metade do curso! Nessa aula você vai aprender aspectos cruciais de segurança e estruturação para garantir um acesso seguro a sua aplicação.
 
-Aula 04 -
+Aula 04 - Atualizando tarefas e validação de rotas
+Você está cada vez mais perto de concluir o seu projeto com Java! Nessa aula vamos implementar melhorias e funcionalidades e enriquecer a interatividade do usuário com a nossa aplicação.
