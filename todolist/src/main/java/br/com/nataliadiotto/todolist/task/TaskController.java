@@ -51,13 +51,26 @@ public class TaskController {
     //http://localhost:8080/tasks/806464046-gdfgfdg-54513143
     //springboot will replace {taskId} for the pathvariable UUID
     @PutMapping("/{taskId}")
-    public TaskModel update(@RequestBody TaskModel taskModel, @PathVariable UUID taskId, HttpServletRequest request) {
+    public ResponseEntity update(@RequestBody TaskModel taskModel, @PathVariable UUID taskId, HttpServletRequest request) {
 
         var task = this.taskRepository.findById(taskId).orElse(null);
 
-        Utils.copyNonNullProperties(taskModel, task); //
+        //validate task
+        if (task == null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body("Task not found.");
+        }
+        var userId = request.getAttribute("userId");
 
-        return this.taskRepository.save(task);
+        //validate user
+        if (!task.getUserId().equals(userId)) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body("This user does not have permission to update this task.");
+        }
+
+        Utils.copyNonNullProperties(taskModel, task); //
+        var updatedTask = this.taskRepository.save(task);
+        return ResponseEntity.ok().body(this.taskRepository.save(updatedTask));
            }
 
 }
