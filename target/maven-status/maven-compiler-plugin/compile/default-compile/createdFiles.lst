@@ -1,0 +1,10 @@
+br/com/nataliadiotto/todolist/filter/FilterTaskAuth.class
+br/com/nataliadiotto/todolist/user/UserModel.class
+br/com/nataliadiotto/todolist/user/UserController.class
+br/com/nataliadiotto/todolist/task/TaskRepository.class
+br/com/nataliadiotto/todolist/task/TaskController.class
+br/com/nataliadiotto/todolist/user/UserRepository.class
+br/com/nataliadiotto/todolist/errors/ExceptionHandlerController.class
+br/com/nataliadiotto/todolist/TodolistApplication.class
+br/com/nataliadiotto/todolist/utils/Utils.class
+br/com/nataliadiotto/todolist/task/TaskModel.class
